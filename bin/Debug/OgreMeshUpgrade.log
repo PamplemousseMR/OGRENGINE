@@ -1,0 +1,32 @@
+15:57:59: Creating resource group General
+15:57:59: Creating resource group Internal
+15:57:59: Creating resource group Autodetect
+15:57:59: Registering ResourceManager for type Material
+15:57:59: Registering ResourceManager for type Skeleton
+15:57:59: Registering ResourceManager for type Mesh
+15:57:59: Skeleton: Loading robot.skeleton
+15:57:59: FileNotFoundException: Cannot locate resource robot.skeleton in resource group General. in ResourceGroupManager::openResource at C:\Users\rmanciaux\Desktop\ogre-1.10.10\OgreMain\src\OgreResourceGroupManager.cpp (line 708)
+15:57:59: Unable to load skeleton robot.skeleton for Mesh conversion. This Mesh will not be animated. You can ignore this message if you are using an offline tool.
+15:57:59: WARNING: conversion is an older format ([MeshSerializer_v1.8]); you should upgrade it as soon as possible using the OgreMeshUpgrade tool.
+15:57:59: MeshSerializer writing mesh data to stream ...
+15:57:59: File header written.
+15:57:59: Writing mesh data...
+15:57:59: Writing submesh...
+15:57:59: Exporting submesh texture aliases...
+15:57:59: Submesh texture aliases exported.
+15:57:59: Exporting dedicated geometry bone assignments...
+15:57:59: Dedicated geometry bone assignments exported.
+15:57:59: Submesh exported.
+15:57:59: Exporting skeleton link...
+15:57:59: Skeleton link exported.
+15:57:59: Exporting bounds information....
+15:57:59: Bounds information exported.
+15:57:59: Exporting submesh name table...
+15:57:59: Submesh name table exported.
+15:57:59: Exporting edge lists...
+15:57:59: Edge lists exported
+15:57:59: Mesh data exported.
+15:57:59: MeshSerializer export successful.
+15:57:59: Unregistering ResourceManager for type Mesh
+15:57:59: Unregistering ResourceManager for type Skeleton
+15:57:59: Unregistering ResourceManager for type Material

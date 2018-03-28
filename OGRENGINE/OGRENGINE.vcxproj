@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{58B7A4F5-D12C-446F-9309-6EFCA458762C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>OGRENGINE</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)libs/Debug/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs/Debug/lib;$(SolutionDir)libs/Debug/lib/OGRE;$(SolutionDir)libs/Debug/lib/OGRE/Samples</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreBites_d.lib;OgreGLSupport_d.lib;OgreHLMS_d.lib;OgreMain_d.lib;OgreMeshLodGenerator_d.lib;OgreOverlay_d.lib;OgrePaging_d.lib;OgreProperty_d.lib;OgreRTShaderSystem_d.lib;OgreTerrain_d.lib;OgreVolume_d.lib;OIS_static_d.lib;Plugin_BSPSceneManager_d.lib;Plugin_OctreeSceneManager_d.lib;Plugin_OctreeZone_d.lib;Plugin_ParticleFX_d.lib;Plugin_PCZSceneManager_d.lib;RenderSystem_Direct3D11_d.lib;RenderSystem_GL3Plus_d.lib;RenderSystem_GL_d.lib;Sample_BezierPatch_d.lib;Sample_BSP_d.lib;Sample_CameraTrack_d.lib;Sample_CelShading_d.lib;Sample_Character_d.lib;Sample_Compositor_d.lib;Sample_Compute_d.lib;Sample_CubeMapping_d.lib;Sample_DeferredShading_d.lib;Sample_Dot3Bump_d.lib;Sample_DualQuaternion_d.lib;Sample_DynTex_d.lib;Sample_EndlessWorld_d.lib;Sample_FacialAnimation_d.lib;Sample_Fresnel_d.lib;Sample_Grass_d.lib;Sample_HLMS_d.lib;Sample_Instancing_d.lib;Sample_Isosurf_d.lib;Sample_Lighting_d.lib;Sample_MeshLod_d.lib;Sample_NewInstancing_d.lib;Sample_Ocean_d.lib;Sample_ParticleFX_d.lib;Sample_ParticleGS_d.lib;Sample_PNTriangles_d.lib;Sample_ShaderSystemMultiLight_d.lib;Sample_ShaderSystemTexturedFog_d.lib;Sample_ShaderSystem_d.lib;Sample_Shadows_d.lib;Sample_SkeletalAnimation_d.lib;Sample_SkyBox_d.lib;Sample_SkyDome_d.lib;Sample_SkyPlane_d.lib;Sample_Smoke_d.lib;Sample_SphereMapping_d.lib;Sample_SSAO_d.lib;Sample_Terrain_d.lib;Sample_Tessellation_d.lib;Sample_TextureArray_d.lib;Sample_TextureFX_d.lib;Sample_Transparency_d.lib;Sample_VolumeCSG_d.lib;Sample_VolumeTerrain_d.lib;Sample_VolumeTex_d.lib;Sample_Water_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)libs/Debug/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs/Debug/lib;$(SolutionDir)libs/Debug/lib/OGRE;$(SolutionDir)libs/Debug/lib/OGRE/Samples</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreBites_d.lib;OgreGLSupport_d.lib;OgreHLMS_d.lib;OgreMain_d.lib;OgreMeshLodGenerator_d.lib;OgreOverlay_d.lib;OgrePaging_d.lib;OgreProperty_d.lib;OgreRTShaderSystem_d.lib;OgreTerrain_d.lib;OgreVolume_d.lib;OIS_static_d.lib;Plugin_BSPSceneManager_d.lib;Plugin_OctreeSceneManager_d.lib;Plugin_OctreeZone_d.lib;Plugin_ParticleFX_d.lib;Plugin_PCZSceneManager_d.lib;RenderSystem_Direct3D11_d.lib;RenderSystem_GL3Plus_d.lib;RenderSystem_GL_d.lib;Sample_BezierPatch_d.lib;Sample_BSP_d.lib;Sample_CameraTrack_d.lib;Sample_CelShading_d.lib;Sample_Character_d.lib;Sample_Compositor_d.lib;Sample_Compute_d.lib;Sample_CubeMapping_d.lib;Sample_DeferredShading_d.lib;Sample_Dot3Bump_d.lib;Sample_DualQuaternion_d.lib;Sample_DynTex_d.lib;Sample_EndlessWorld_d.lib;Sample_FacialAnimation_d.lib;Sample_Fresnel_d.lib;Sample_Grass_d.lib;Sample_HLMS_d.lib;Sample_Instancing_d.lib;Sample_Isosurf_d.lib;Sample_Lighting_d.lib;Sample_MeshLod_d.lib;Sample_NewInstancing_d.lib;Sample_Ocean_d.lib;Sample_ParticleFX_d.lib;Sample_ParticleGS_d.lib;Sample_PNTriangles_d.lib;Sample_ShaderSystemMultiLight_d.lib;Sample_ShaderSystemTexturedFog_d.lib;Sample_ShaderSystem_d.lib;Sample_Shadows_d.lib;Sample_SkeletalAnimation_d.lib;Sample_SkyBox_d.lib;Sample_SkyDome_d.lib;Sample_SkyPlane_d.lib;Sample_Smoke_d.lib;Sample_SphereMapping_d.lib;Sample_SSAO_d.lib;Sample_Terrain_d.lib;Sample_Tessellation_d.lib;Sample_TextureArray_d.lib;Sample_TextureFX_d.lib;Sample_Transparency_d.lib;Sample_VolumeCSG_d.lib;Sample_VolumeTerrain_d.lib;Sample_VolumeTex_d.lib;Sample_Water_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)libs/Release/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs/Release/lib;$(SolutionDir)libs/Release/lib/OGRE;$(SolutionDir)libs/Release/lib/OGRE/Samples</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreBites.lib;OgreGLSupport.lib;OgreHLMS.lib;OgreMain.lib;OgreMeshLodGenerator.lib;OgreOverlay.lib;OgrePaging.lib;OgreProperty.lib;OgreRTShaderSystem.lib;OgreTerrain.lib;OgreVolume.lib;Plugin_BSPSceneManager.lib;Plugin_OctreeSceneManager.lib;Plugin_OctreeZone.lib;Plugin_ParticleFX.lib;Plugin_PCZSceneManager.lib;RenderSystem_Direct3D11.lib;RenderSystem_GL.lib;RenderSystem_GL3Plus.lib;Sample_BezierPatch.lib;Sample_BSP.lib;Sample_CameraTrack.lib;Sample_CelShading.lib;Sample_Character.lib;Sample_Compositor.lib;Sample_Compute.lib;Sample_CubeMapping.lib;Sample_DeferredShading.lib;Sample_Dot3Bump.lib;Sample_DualQuaternion.lib;Sample_DynTex.lib;Sample_EndlessWorld.lib;Sample_FacialAnimation.lib;Sample_Fresnel.lib;Sample_Grass.lib;Sample_HLMS.lib;Sample_Instancing.lib;Sample_Isosurf.lib;Sample_Lighting.lib;Sample_MeshLod.lib;Sample_NewInstancing.lib;Sample_Ocean.lib;Sample_ParticleFX.lib;Sample_ParticleGS.lib;Sample_PNTriangles.lib;Sample_ShaderSystem.lib;Sample_ShaderSystemMultiLight.lib;Sample_ShaderSystemTexturedFog.lib;Sample_Shadows.lib;Sample_SkeletalAnimation.lib;Sample_SkyBox.lib;Sample_SkyDome.lib;Sample_SkyPlane.lib;Sample_Smoke.lib;Sample_SphereMapping.lib;Sample_SSAO.lib;Sample_Terrain.lib;Sample_Tessellation.lib;Sample_TextureArray.lib;Sample_TextureFX.lib;Sample_Transparency.lib;Sample_VolumeCSG.lib;Sample_VolumeTerrain.lib;Sample_VolumeTex.lib;Sample_Water.lib;OIS_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)libs/Release/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs/Release/lib;$(SolutionDir)libs/Release/lib/OGRE;$(SolutionDir)libs/Release/lib/OGRE/Samples</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreBites.lib;OgreGLSupport.lib;OgreHLMS.lib;OgreMain.lib;OgreMeshLodGenerator.lib;OgreOverlay.lib;OgrePaging.lib;OgreProperty.lib;OgreRTShaderSystem.lib;OgreTerrain.lib;OgreVolume.lib;Plugin_BSPSceneManager.lib;Plugin_OctreeSceneManager.lib;Plugin_OctreeZone.lib;Plugin_ParticleFX.lib;Plugin_PCZSceneManager.lib;RenderSystem_Direct3D11.lib;RenderSystem_GL.lib;RenderSystem_GL3Plus.lib;Sample_BezierPatch.lib;Sample_BSP.lib;Sample_CameraTrack.lib;Sample_CelShading.lib;Sample_Character.lib;Sample_Compositor.lib;Sample_Compute.lib;Sample_CubeMapping.lib;Sample_DeferredShading.lib;Sample_Dot3Bump.lib;Sample_DualQuaternion.lib;Sample_DynTex.lib;Sample_EndlessWorld.lib;Sample_FacialAnimation.lib;Sample_Fresnel.lib;Sample_Grass.lib;Sample_HLMS.lib;Sample_Instancing.lib;Sample_Isosurf.lib;Sample_Lighting.lib;Sample_MeshLod.lib;Sample_NewInstancing.lib;Sample_Ocean.lib;Sample_ParticleFX.lib;Sample_ParticleGS.lib;Sample_PNTriangles.lib;Sample_ShaderSystem.lib;Sample_ShaderSystemMultiLight.lib;Sample_ShaderSystemTexturedFog.lib;Sample_Shadows.lib;Sample_SkeletalAnimation.lib;Sample_SkyBox.lib;Sample_SkyDome.lib;Sample_SkyPlane.lib;Sample_Smoke.lib;Sample_SphereMapping.lib;Sample_SSAO.lib;Sample_Terrain.lib;Sample_Tessellation.lib;Sample_TextureArray.lib;Sample_TextureFX.lib;Sample_Transparency.lib;Sample_VolumeCSG.lib;Sample_VolumeTerrain.lib;Sample_VolumeTex.lib;Sample_Water.lib;OIS_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Application.h" />
+    <ClInclude Include="Compositor.h" />
+    <ClInclude Include="Material.h" />
+    <ClInclude Include="RenderSystemLoader.h" />
+    <ClInclude Include="ResourceLoader.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="ViewportListener.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Compositor.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="OGRENGINE.cpp" />
+    <ClCompile Include="RenderSystemLoader.cpp" />
+    <ClCompile Include="ResourceLoader.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="ViewportListener.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

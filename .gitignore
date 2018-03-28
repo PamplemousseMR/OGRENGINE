@@ -1,0 +1,9 @@
+*.exe 
+/.vs
+OGRENGINE/Debug
+OGRENGINE/x64
+bin/Debug/PDB
+/ipch
+/x64
+*.opendb
+*.db

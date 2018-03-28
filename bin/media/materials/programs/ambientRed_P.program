@@ -1,0 +1,26 @@
+vertex_program position_GLSL glsl
+{
+    source position_VS.glsl
+
+    default_params
+    {
+        param_named_auto u_worldViewProj worldviewproj_matrix
+    }
+}
+
+vertex_program ambientRed_P_VS unified
+{
+    delegate position_GLSL
+}
+
+
+
+fragment_program red_GLSL glsl
+{
+    source red_FS.glsl
+}
+
+fragment_program ambientRed_P_FS unified
+{
+    delegate red_GLSL
+}
