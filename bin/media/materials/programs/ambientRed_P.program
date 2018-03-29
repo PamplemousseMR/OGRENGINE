@@ -1,6 +1,6 @@
-vertex_program position_GLSL glsl
+vertex_program default_GLSL glsl
 {
-    source position_VS.glsl
+    source default_VS.glsl
 
     default_params
     {
@@ -8,19 +8,19 @@ vertex_program position_GLSL glsl
     }
 }
 
-vertex_program ambientRed_P_VS unified
+vertex_program doubleTexture_P_VS unified
 {
-    delegate position_GLSL
+    delegate default_GLSL
 }
 
 
 
-fragment_program red_GLSL glsl
+fragment_program doubleTexture_GLSL glsl
 {
-    source red_FS.glsl
+    source doubleTexture_FS.glsl
 }
 
-fragment_program ambientRed_P_FS unified
+fragment_program doubleTexture_P_FS unified
 {
-    delegate red_GLSL
+    delegate doubleTexture_GLSL
 }

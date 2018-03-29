@@ -73,15 +73,16 @@ void Application::start()
 	m_root->addFrameListener(this);
 
 	m_renderSystemLoader.start();
-
 	loadScene();
+	m_resourceLoader.start();
 	initOIS();
 
-	m_resourceLoader.start();
-
 	m_material.start();
+
+	::Ogre::CompositorManager::getSingleton().addCompositor(m_viewport, "blackAndWhite_C");
+	::Ogre::CompositorManager::getSingleton().setCompositorEnabled(m_viewport, "blackAndWhite_C", true);
+
 	//m_compositor->start();
-	//::Ogre::CompositorManager::getSingleton().addCompositor(m_viewport, "BlackAndWhite", true);
 
 	createObject();
 }
@@ -191,7 +192,7 @@ void Application::createObject()
 	//----------------------------------
 	{
 		::Ogre::Entity* cube = m_sceneManager->createEntity("OGRENGINE_NodeCube2", "cube.mesh");
-		cube->setMaterialName("ambientRed_M");
+		cube->setMaterialName("doubleTexture_M");
 		cube->setCastShadows(false);
 
 		m_cube2 = m_sceneManager->getRootSceneNode()->createChildSceneNode();
