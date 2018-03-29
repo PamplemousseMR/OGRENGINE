@@ -50,15 +50,19 @@ void Compositor::start()
 		output->setInputMode(::Ogre::CompositionTargetPass::InputMode::IM_NONE);
 
 		::Ogre::CompositionPass* pass = output->createPass();
+		pass->setType(::Ogre::CompositionPass::PassType::PT_RENDERQUAD);
 		pass->setMaterial(m_material);
+		pass->setInput(0, renderTarget0->name);
 	}
 
-	compositorManager.addCompositor(m_viewport, m_name, true);
+	compositorManager.addCompositor(m_viewport, m_name);
+	compositorManager.setCompositorEnabled(m_viewport, m_name, true);
 }
 
 void Compositor::stop()
 {
 	std::cout << "[" << __FUNCTION__ << "] " << "Stop : " << m_name << std::endl;
+	::Ogre::CompositorManager::getSingleton().removeCompositor(m_viewport, m_name);
 	::Ogre::MaterialManager::getSingleton().remove(m_name + "_Material", ::Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 	m_material.reset();
 }
@@ -70,16 +74,24 @@ void Compositor::createMaterial()
 	::Ogre::Technique* technique = m_material->getTechnique(0);
 
 	::Ogre::Pass* pass = technique->getPass(0);
+	pass->setDepthCheckEnabled(false);
+	pass->setPolygonModeOverrideable(false);
 
 	{
 		Ogre::HighLevelGpuProgramPtr vertex = Ogre::HighLevelGpuProgramManager::getSingletonPtr()->createProgram(m_name + "_VS", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, "glsl", Ogre::GpuProgramType::GPT_VERTEX_PROGRAM);
-		vertex->setSource("#version 150\n"
-			"in vec4 vertex;\n"
+		vertex->setSource("#version 330\n"
+			"layout(location = 0)  in vec4 position;\n"	// magic name
+			"in vec2 uv0;\n"							// magic name
+			"uniform mat4 u_worldViewProj;\n"
+			"out vec2 o_textCoord;\n"
 			"void main()\n"
 			"{\n"
-			"	vec2 inPos = sign(vertex.xy);\n"
-			"	gl_Position = vec4(inPos.xy, 0.0, 1.0);\n"
+			"	gl_Position = u_worldViewProj * position;\n"
+			"	o_textCoord = uv0;\n"
 			"}\n");
+
+		::Ogre::GpuProgramParametersSharedPtr vertexParameters = vertex->getDefaultParameters();
+		vertexParameters->setNamedAutoConstant("u_worldViewProj", ::Ogre::GpuProgramParameters::ACT_WORLDVIEWPROJ_MATRIX);
 
 		vertex->load();
 
@@ -88,14 +100,20 @@ void Compositor::createMaterial()
 
 	{
 		Ogre::HighLevelGpuProgramPtr fragment = Ogre::HighLevelGpuProgramManager::getSingletonPtr()->createProgram(m_name + "_FS", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, "glsl", Ogre::GpuProgramType::GPT_FRAGMENT_PROGRAM);
-		fragment->setSource("#version 150\n"
+		fragment->setSource("#version 330\n"
 			"out vec4 fragColor;\n"
+			"uniform sampler2D RT;\n"
+			"in vec2 o_textCoord;\n"
 			"void main()\n"
 			"{\n"
-			"	fragColor = vec4(1.f, 0.f, 0.f, 0.f);\n"
+			"	vec3 greyscale = vec3(dot(texture2D(RT, o_textCoord).rgb, vec3(0.3, 0.59, 0.11)));\n"
+			"	fragColor = vec4(greyscale, 1.0);\n"
 			"}\n");
 
 		fragment->load();
+
+		::Ogre::TextureUnitState* pTex = pass->createTextureUnitState();
+		pTex->setTextureFiltering(::Ogre::TextureFilterOptions::TFO_TRILINEAR);
 
 		pass->setFragmentProgram(fragment->getName());
 	}
