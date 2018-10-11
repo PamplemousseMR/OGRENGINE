@@ -7,3 +7,4 @@ bin/Debug/PDB
 /x64
 *.opendb
 *.db
+CMakeLists\.txt\.user
