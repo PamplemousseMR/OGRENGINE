@@ -78,7 +78,6 @@ public:
     ~RenderSystemManager();
 
     void load(RENDERSYSTEMMANAGER_TYPE _type);
-    void unload();
 
     void setColourDepth(RENDERSYSTEMMANAGER_DEPTH);
     void setDisplayFrequency(RENDERSYSTEMMANAGER_FREQUENCY);

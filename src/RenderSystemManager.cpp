@@ -57,10 +57,6 @@ void RenderSystemManager::load(RENDERSYSTEMMANAGER_TYPE _type)
     {
 		throw std::exception("[Application::loadRenderSystem] can't find render system");
     }
-    else
-    {
-        std::cout << "[" << __FUNCTION__ << "] Used render system : " << (*findedRSIt)->getName() << std::endl;
-    }
 
     m_renderSystem = *findedRSIt;
 
@@ -77,14 +73,6 @@ void RenderSystemManager::load(RENDERSYSTEMMANAGER_TYPE _type)
     }
 
     root->setRenderSystem(m_renderSystem);
-}
-
-void RenderSystemManager::unload()
-{
-    std::cout << "[" << __FUNCTION__ << "] ..." << std::endl;
-
-    ::Ogre::Root* const root = ::Ogre::Singleton< ::Ogre::Root >::getSingletonPtr();
-    root->setRenderSystem(nullptr);
 }
 
 void RenderSystemManager::setColourDepth(RENDERSYSTEMMANAGER_DEPTH _depth)

@@ -32,14 +32,14 @@ Application::Application() :
 
 Application::~Application()
 {
-	if(m_root != nullptr) OGRE_DELETE m_root;
+    if(m_root != nullptr) OGRE_DELETE m_root;
 	if(m_log != nullptr) OGRE_DELETE m_log;
 }
 
 void Application::run()
 {
-	while (true)
-	{
+    while (true)
+    {
 		if (m_renderWindow->isClosed())
 			return;
 
@@ -69,21 +69,11 @@ void Application::start()
     m_renderSystemLoader.setVideoMode(::RenderSystemManager::MODE_800x600);
 
 	loadScene();
-	m_resourceLoader.start();
+    m_resourceLoader.load();
+    m_resourceLoader.initialiseAll();
 
 	::Ogre::CompositorManager::getSingleton().addCompositor(m_viewport, "blackAndWhite_C");
     ::Ogre::CompositorManager::getSingleton().setCompositorEnabled(m_viewport, "blackAndWhite_C", true);
-
-    ::Ogre::ResourceGroupManager::ResourceManagerIterator it = ::Ogre::ResourceGroupManager::getSingleton().getResourceManagerIterator();
-    while (it.hasMoreElements())
-    {
-        ::Ogre::ResourceManager::ResourceMapIterator resourceIt = it.getNext()->getResourceIterator();
-        while (resourceIt.hasMoreElements())
-        {
-            ::Ogre::SharedPtr< ::Ogre::Resource >  resource = resourceIt.getNext();
-            std::cout << "========================== " << resource->getName() << " " << resource->getGroup() << std::endl;
-        }
-    }
 
 	createObject();
 }
@@ -92,10 +82,11 @@ void Application::stop()
 {
 	destroyObject();
 
-	unloadScene();
+    ::Ogre::CompositorManager::getSingleton().removeCompositor(m_viewport, "blackAndWhite_C");
 
-    m_renderSystemLoader.unload();
-	m_resourceLoader.stop();
+    m_resourceLoader.unload();
+
+    unloadScene();
 
 	m_root->removeFrameListener(this);
 }
