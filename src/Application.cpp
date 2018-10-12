@@ -59,6 +59,15 @@ void Application::start()
 	m_root->addFrameListener(this);
 
     m_renderSystemLoader.load(::RenderSystemManager::OPENGL3);
+    m_renderSystemLoader.setColourDepth(::RenderSystemManager::DEPTH_32);
+    m_renderSystemLoader.setDisplayFrequency(::RenderSystemManager::FREQUENCY_60);
+    m_renderSystemLoader.setFSAA(::RenderSystemManager::FSAA_8);
+    m_renderSystemLoader.setFullScreen(false);
+    m_renderSystemLoader.setRTTPreferredMode(::RenderSystemManager::RTT_FBO);
+    m_renderSystemLoader.setVSync(false);
+    m_renderSystemLoader.setVSyncInterval(::RenderSystemManager::INTERVAL_1);
+    m_renderSystemLoader.setVideoMode(::RenderSystemManager::MODE_800x600);
+
 	loadScene();
 	m_resourceLoader.start();
 
