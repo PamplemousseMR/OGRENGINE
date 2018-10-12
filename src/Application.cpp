@@ -1,4 +1,4 @@
-#include "Application.h"
+#include "Application.hpp"
 
 #include <iostream>
 
@@ -58,12 +58,12 @@ void Application::start()
 
 	m_root->addFrameListener(this);
 
-	m_renderSystemLoader.start();
+    m_renderSystemLoader.load(::RenderSystemManager::OPENGL3);
 	loadScene();
 	m_resourceLoader.start();
 
 	::Ogre::CompositorManager::getSingleton().addCompositor(m_viewport, "blackAndWhite_C");
-	::Ogre::CompositorManager::getSingleton().setCompositorEnabled(m_viewport, "blackAndWhite_C", true);
+    ::Ogre::CompositorManager::getSingleton().setCompositorEnabled(m_viewport, "blackAndWhite_C", true);
 
     ::Ogre::ResourceGroupManager::ResourceManagerIterator it = ::Ogre::ResourceGroupManager::getSingleton().getResourceManagerIterator();
     while (it.hasMoreElements())
@@ -85,7 +85,7 @@ void Application::stop()
 
 	unloadScene();
 
-	m_renderSystemLoader.stop();
+    m_renderSystemLoader.unload();
 	m_resourceLoader.stop();
 
 	m_root->removeFrameListener(this);
@@ -100,7 +100,7 @@ void Application::loadScene()
 	m_sceneManager->setShadowTechnique(Ogre::ShadowTechnique::SHADOWTYPE_STENCIL_MODULATIVE);
 
 	m_camera = m_sceneManager->createCamera("OGRENGINE_Camera");
-	m_camera->setPosition(Ogre::Vector3(0, 0, 0));
+    m_camera->setPosition(Ogre::Vector3(0, 300, 500));
 	m_camera->setNearClipDistance(Ogre::Real(0.01));
 	m_camera->setFarClipDistance(Ogre::Real(1000));
 	m_camera->setAutoAspectRatio(true);
@@ -147,7 +147,7 @@ void Application::createObject()
 		m_light1->setSpotlightRange(Ogre::Degree(Ogre::Real(100)), Ogre::Degree(Ogre::Real(40)), 0.1);
 		m_light1->setDiffuseColour(Ogre::ColourValue(1, 1, 1));
 		m_light1->setSpecularColour(Ogre::ColourValue(1, 1, 1));
-		m_sceneManager->getRootSceneNode()->attachObject(m_light1);
+        m_sceneManager->getRootSceneNode()->attachObject(m_light1);
 	}
 	// Light2
 	//----------------------------------
@@ -157,18 +157,18 @@ void Application::createObject()
 		m_light2->setDirection(Ogre::Vector3(1, -1, -1));
 		m_light2->setDiffuseColour(Ogre::ColourValue(1, 1, 1));
 		m_light2->setSpecularColour(Ogre::ColourValue(1, 1, 1));
-		m_sceneManager->getRootSceneNode()->attachObject(m_light2);
+        m_sceneManager->getRootSceneNode()->attachObject(m_light2);
 	}
 	// Cube1
 	//----------------------------------
 	{
         ::Ogre::Entity* cube = m_sceneManager->createEntity("OGRENGINE_NodeCube1", "cube.mesh", "General");
-		cube->setMaterialName("OGRENGINE_Material_Shader");
+        cube->setMaterialName("doubleTexture_M");
 		cube->setCastShadows(false);
 
 		m_cube1 = m_sceneManager->getRootSceneNode()->createChildSceneNode();
 		m_cube1->translate(Ogre::Vector3(100, 250, 100));
-		m_cube1->attachObject(cube);
+        m_cube1->attachObject(cube);
 	}
 	// Cube2
 	//----------------------------------
@@ -179,50 +179,50 @@ void Application::createObject()
 
 		m_cube2 = m_sceneManager->getRootSceneNode()->createChildSceneNode();
 		m_cube2->translate(Ogre::Vector3(-100, 250, -100));
-		m_cube2->attachObject(cube);
+        m_cube2->attachObject(cube);
 	}
 	// Cube3
 	//----------------------------------
 	{
         ::Ogre::Entity* cube = m_sceneManager->createEntity("OGRENGINE_NodeCube3", "cube.mesh", "General");
-		cube->setMaterialName("cubeMaterial");
+        cube->setMaterialName("doubleTexture_M");
 		cube->setCastShadows(false);
 
 		m_cube3 = m_sceneManager->getRootSceneNode()->createChildSceneNode();
 		m_cube3->translate(Ogre::Vector3(-100, 250, 100));
-		m_cube3->attachObject(cube);
+        m_cube3->attachObject(cube);
 	}
 	// Cube4
 	//----------------------------------
 	{
         ::Ogre::Entity* cube = m_sceneManager->createEntity("OGRENGINE_NodeCube4", "cube.mesh", "General");
-		cube->setMaterialName("cubeMaterial");
+        cube->setMaterialName("doubleTexture_M");
 		cube->setCastShadows(false);
 
 		m_cube4 = m_sceneManager->getRootSceneNode()->createChildSceneNode();
 		m_cube4->translate(Ogre::Vector3(100, 250, -100));
-		m_cube4->attachObject(cube);
+        m_cube4->attachObject(cube);
 	}
 	// Sphere1
 	//----------------------------------
 	{
         ::Ogre::Entity* sphere = m_sceneManager->createEntity("OGRENGINE_NodeSphere1", "sphere.mesh", "General");
-		sphere->setMaterialName("sphereMaterial");
+        sphere->setMaterialName("doubleTexture_M");
 		sphere->setCastShadows(false);
 
 		m_sphere1 = m_sceneManager->getRootSceneNode()->createChildSceneNode();
 		m_sphere1->translate(Ogre::Vector3(0, 500, 0));
-		m_sphere1->attachObject(sphere);
+        m_sphere1->attachObject(sphere);
 	}
 	// Plane
 	//---------------------------------
 	{
-        /*Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
+        Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
 		Ogre::MeshManager::getSingleton().createPlane("ground", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, plane, 5000, 5000, 200, 200, true, 1, 5, 5, Ogre::Vector3::UNIT_Z);
 		Ogre::Entity* ent = m_sceneManager->createEntity("GroundEntity", "ground");
 		m_sceneManager->getRootSceneNode()->attachObject(ent);
-        ent->setMaterialName("planeMaterial");
-        ent->setCastShadows(false);*/
+        ent->setMaterialName("doubleTexture_M");
+        ent->setCastShadows(false);
 	}
 }
 

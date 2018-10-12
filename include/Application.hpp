@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ResourceLoader.h"
-#include "RenderSystemLoader.h"
+#include "ResourceLoader.hpp"
+#include "RenderSystemManager.hpp"
 
 #include <OGRE/Ogre.h>
 
@@ -23,7 +23,7 @@ private:
 	static const float s_ROTATE_SCALE;
 
 	ResourceLoader m_resourceLoader;
-	RenderSystemLoader m_renderSystemLoader;
+	RenderSystemManager m_renderSystemLoader;
 
 	::Ogre::LogManager* m_log;
 	::Ogre::Root* m_root;

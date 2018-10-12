@@ -2,7 +2,7 @@
 #	project
 #========================================
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
-PROJECT("OGRENGINE")
+PROJECT("OGRENGINE" CXX)
 
 #================================================================================  
 #		init

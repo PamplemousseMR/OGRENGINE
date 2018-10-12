@@ -1,4 +1,4 @@
-#include "ResourceLoader.h"
+#include "ResourceLoader.hpp"
 
 #include <OGRE/OgreConfigFile.h>
 #include <OGRE/OgreResourceGroupManager.h>
