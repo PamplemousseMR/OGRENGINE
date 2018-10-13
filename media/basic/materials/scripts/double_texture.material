@@ -10,16 +10,16 @@ material doubleTexture_M
 
 			fragment_program_ref doubleTexture_P_FS
 			{
-				param_named texture1 int 0
-				param_named texture2 int 1
+                                param_named u_texture_1 int 0
+                                param_named u_texture_2 int 1
 			}
 
-			texture_unit
+                        texture_unit
 			{
 				texture checker.png
 			}
 
-			texture_unit
+                        texture_unit
 			{
 				texture MtlPlat2.jpg
 			}

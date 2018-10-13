@@ -1,4 +1,5 @@
 #version 330
+
 layout(location = 0) in vec4 position;
 in vec2 uv0;
 
@@ -8,6 +9,6 @@ out vec2 o_textCoord;
 
 void main()
 {
-	gl_Position = u_worldViewProj * position;
-	o_textCoord = uv0;
+    gl_Position = u_worldViewProj * position;
+    o_textCoord = uv0;
 }
