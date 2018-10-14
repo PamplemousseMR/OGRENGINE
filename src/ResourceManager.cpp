@@ -35,6 +35,7 @@ void ResourceManager::load()
 		{
 			typeName = i->first;
             archName = i->second;
+            std::cout << "[" << __FUNCTION__ << "] Find resource : " << resourceGroupName << " " << archName << " " << std::endl;
             manager.addResourceLocation(archName, typeName, resourceGroupName);
 		}
 	}
@@ -68,16 +69,19 @@ void ResourceManager::unload()
 
 void ResourceManager::initialiseAll() const
 {
+    std::cout << "[" << __FUNCTION__ << "] ..." << std::endl;
     ::Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 }
 
 void ResourceManager::initialise(const ::Ogre::String& _group) const
 {
+    std::cout << "[" << __FUNCTION__ << "] " << _group << "..." << std::endl;
     ::Ogre::ResourceGroupManager::getSingleton().initialiseResourceGroup(_group);
 }
 
 void ResourceManager::clearAll() const
 {
+    std::cout << "[" << __FUNCTION__ << "] ..." << std::endl;
     ::Ogre::ResourceGroupManager& manager = ::Ogre::ResourceGroupManager::getSingleton();
     for(::Ogre::String group : manager.getResourceGroups())
     {
@@ -87,6 +91,7 @@ void ResourceManager::clearAll() const
 
 void ResourceManager::clear(const ::Ogre::String& _group) const
 {
+    std::cout << "[" << __FUNCTION__ << "] clear " << _group << "..." << std::endl;
     ::Ogre::ResourceGroupManager::getSingleton().clearResourceGroup(_group);
 }
 

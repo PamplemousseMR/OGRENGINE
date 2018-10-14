@@ -14,7 +14,8 @@ Application::Application() :
 	m_camera(nullptr),
     m_light(nullptr),
     m_cube(nullptr),
-    m_cameraNode(nullptr)
+    m_cameraNode(nullptr),
+    m_material("doubleTexture_M")
 {
 	m_log = OGRE_NEW Ogre::LogManager();
     m_log->createLog("log.txt", false, false);
@@ -49,7 +50,9 @@ void Application::start()
 	loadScene();
 
     m_resourceLoader.load();
-    m_resourceLoader.initialise("Basic");
+    m_resourceLoader.initialise("ManualMaterial");
+
+    m_material.load();
 
 	createObject();
 }
@@ -57,6 +60,8 @@ void Application::start()
 void Application::stop()
 {
 	destroyObject();
+
+    m_material.unload();
 
     m_resourceLoader.unload();
 
@@ -134,7 +139,7 @@ void Application::createObject()
     // Cube
 	//----------------------------------
 	{
-        ::Ogre::Entity* cube = m_sceneManager->createEntity("OGRENGINE_Cube", "cube.mesh", "Basic");
+        ::Ogre::Entity* cube = m_sceneManager->createEntity("OGRENGINE_Cube", "cube.mesh", "ManualMaterial");
         cube->setMaterialName("doubleTexture_M");
 		cube->setCastShadows(false);
 

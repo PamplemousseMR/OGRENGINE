@@ -18,8 +18,8 @@ void RenderSystemManager::load(RENDERSYSTEMMANAGER_TYPE _type)
 {
     std::cout << "[" << __FUNCTION__ << "] ..." << std::endl;
 
-    ::Ogre::Root* const root = ::Ogre::Singleton< ::Ogre::Root >::getSingletonPtr();
-    const ::Ogre::RenderSystemList& rsList = root->getAvailableRenderers();
+    ::Ogre::Root& root = ::Ogre::Singleton< ::Ogre::Root >::getSingleton();
+    const ::Ogre::RenderSystemList& rsList = root.getAvailableRenderers();
 
     std::for_each(rsList.begin(), rsList.end(), [&](const ::Ogre::RenderSystem* const _renderSystem)
     {
@@ -72,7 +72,7 @@ void RenderSystemManager::load(RENDERSYSTEMMANAGER_TYPE _type)
 		std::cout << std::endl;
     }
 
-    root->setRenderSystem(m_renderSystem);
+    root.setRenderSystem(m_renderSystem);
 }
 
 void RenderSystemManager::setColourDepth(RENDERSYSTEMMANAGER_DEPTH _depth)
