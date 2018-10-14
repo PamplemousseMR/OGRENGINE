@@ -2,17 +2,16 @@
 
 #include "ResourceManager.hpp"
 #include "RenderSystemManager.hpp"
-#include "Material.hpp"
 
 #include <OGRE/Ogre.h>
 
-class Application : public Ogre::FrameListener
+class ScriptMaterial : public Ogre::FrameListener
 {
 
 public:
 
-	Application();
-    virtual ~Application() override;
+    ScriptMaterial();
+    virtual ~ScriptMaterial() override;
 
     void start();
 	void stop();
@@ -35,7 +34,6 @@ private:
     ::Ogre::SceneNode* m_cube;
 
     ::Ogre::SceneNode* m_cameraNode;
-    Material m_material;
 
 	void loadScene();
 	void createObject();

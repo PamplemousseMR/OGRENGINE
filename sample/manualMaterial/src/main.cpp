@@ -1,10 +1,10 @@
-#include "Application.hpp"
+#include "ManualMaterial.hpp"
 
 #include <iostream>
 
 int main()
 {
-    Application application;
+    ManualMaterial application;
     application.start();
     application.run();
     application.stop();

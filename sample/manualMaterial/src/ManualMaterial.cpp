@@ -1,8 +1,8 @@
-#include "Application.hpp"
+#include "ManualMaterial.hpp"
 
 #include <iostream>
 
-Application::Application() :
+ManualMaterial::ManualMaterial() :
     FrameListener(),
     m_renderSystemLoader(),
     m_resourceLoader("../../config/resources.cfg"),
@@ -27,13 +27,13 @@ Application::Application() :
 #endif
 }
 
-Application::~Application()
+ManualMaterial::~ManualMaterial()
 {
     if(m_root != nullptr) OGRE_DELETE m_root;
 	if(m_log != nullptr) OGRE_DELETE m_log;
 }
 
-void Application::start()
+void ManualMaterial::start()
 {
 	m_root->addFrameListener(this);
 
@@ -57,7 +57,7 @@ void Application::start()
 	createObject();
 }
 
-void Application::stop()
+void ManualMaterial::stop()
 {
 	destroyObject();
 
@@ -70,7 +70,7 @@ void Application::stop()
 	m_root->removeFrameListener(this);
 }
 
-void Application::run()
+void ManualMaterial::run()
 {
     int i=0;
     while (++i < 10000)
@@ -86,7 +86,7 @@ void Application::run()
     }
 }
 
-void Application::loadScene()
+void ManualMaterial::loadScene()
 {
 	m_renderWindow = m_root->initialise(true, "OGRENGINE_RenderWindow");
 
@@ -108,7 +108,7 @@ void Application::loadScene()
     m_cameraNode->attachObject(m_camera);
 }
 
-void Application::unloadScene()
+void ManualMaterial::unloadScene()
 {
     m_cameraNode->detachObject(m_camera);
     m_sceneManager->getRootSceneNode()->removeChild(m_cameraNode);
@@ -123,7 +123,7 @@ void Application::unloadScene()
 	m_root->destroyRenderTarget(m_renderWindow);
 }
 
-void Application::createObject()
+void ManualMaterial::createObject()
 {
     // Light
 	//----------------------------------
@@ -147,7 +147,7 @@ void Application::createObject()
 	}
 }
 
-void Application::destroyObject()
+void ManualMaterial::destroyObject()
 {
     // Cube
     //----------------------------------
@@ -167,17 +167,17 @@ void Application::destroyObject()
 
 // ================================= Events =================================
 
-bool Application::frameStarted(const Ogre::FrameEvent&)
+bool ManualMaterial::frameStarted(const Ogre::FrameEvent&)
 {
 	return true;
 }
 
-bool Application::frameEnded(const Ogre::FrameEvent&)
+bool ManualMaterial::frameEnded(const Ogre::FrameEvent&)
 {
 	return true;
 }
 
-bool Application::frameRenderingQueued(const Ogre::FrameEvent&)
+bool ManualMaterial::frameRenderingQueued(const Ogre::FrameEvent&)
 {
     // Rotate the cube
 	//---------------------------------
