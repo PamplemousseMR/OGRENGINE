@@ -31,18 +31,18 @@ void main()
     float cosAlpha = clamp(dot(f3CamDir_VsN, f3CamReflectDir_VsN), 0, 1);
 
     // ambient
-    vec3 f3AmbientCol = texture( u_tAmbient, vec2(v_f2TextCor_Fs.x, 1 - v_f2TextCor_Fs.y)).rgb;
+    vec3 f3AmbientCol = texture(u_tAmbient, vec2(v_f2TextCor_Fs.x, 1 - v_f2TextCor_Fs.y)).rgb;
     f3AmbientCol = f3AmbientCol * u_f3LightAmbientCol;
 
     // diffuse
-    vec4 f4DiffuseCol = texture( u_tDiffuse, vec2(v_f2TextCor_Fs.x, 1 - v_f2TextCor_Fs.y));
+    vec4 f4DiffuseCol = texture(u_tDiffuse, vec2(v_f2TextCor_Fs.x, 1 - v_f2TextCor_Fs.y));
     vec3 f3DiffuseCol = f4DiffuseCol.rgb;
     float fAlpha = f4DiffuseCol.a;
     f3DiffuseCol = f3DiffuseCol * u_f3LightDiffuseCol * cosTheta;
 
     // specular
-    vec3 f3SpecularCol = texture( u_tSpecular, vec2(v_f2TextCor_Fs.x, 1 - v_f2TextCor_Fs.y)).rgb;
+    vec3 f3SpecularCol = texture(u_tSpecular, vec2(v_f2TextCor_Fs.x, 1 - v_f2TextCor_Fs.y)).rgb;
     f3SpecularCol = f3SpecularCol * u_f3LightSpecularCol * pow(cosAlpha, u_fSpecularExponent);
 
-    v_f4OutCol = vec4(u_f3AmbientCol * f3AmbientCol + u_f3DiffuseCol * f3DiffuseCol + u_f3SpecularCol * f3SpecularCol ,fAlpha);
+    v_f4OutCol = vec4(u_f3AmbientCol * f3AmbientCol + u_f3DiffuseCol * f3DiffuseCol + u_f3SpecularCol * f3SpecularCol, fAlpha);
 }

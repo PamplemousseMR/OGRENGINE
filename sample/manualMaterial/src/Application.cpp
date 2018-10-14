@@ -15,7 +15,7 @@ Application::Application() :
     m_light(nullptr),
     m_cube(nullptr),
     m_cameraNode(nullptr),
-    m_material("doubleTexture_M")
+    m_material("manual_material_M")
 {
 	m_log = OGRE_NEW Ogre::LogManager();
     m_log->createLog("log.txt", false, false);
@@ -91,6 +91,7 @@ void Application::loadScene()
 	m_renderWindow = m_root->initialise(true, "OGRENGINE_RenderWindow");
 
 	m_sceneManager = m_root->createSceneManager();
+    m_sceneManager->setAmbientLight(::Ogre::ColourValue(1.0, 1.0, 1.0, 1.0));
 
 	m_camera = m_sceneManager->createCamera("OGRENGINE_Camera");
     m_camera->setPosition(Ogre::Vector3(0, 0, 500));
@@ -128,10 +129,8 @@ void Application::createObject()
 	//----------------------------------
 	{
         m_light = m_sceneManager->createLight("OGRENGINE_Light");
-        m_light->setType(Ogre::Light::LT_SPOTLIGHT);
-        m_light->setPosition(Ogre::Vector3(0,1000,0));
-        m_light->setDirection(Ogre::Vector3(0, -1, 0));
-        m_light->setSpotlightRange(Ogre::Degree(Ogre::Real(100)), Ogre::Degree(Ogre::Real(40)), Ogre::Real(0.1));
+        m_light->setType(Ogre::Light::LT_POINT);
+        m_light->setPosition(Ogre::Vector3(500, 0, 1000));
         m_light->setDiffuseColour(Ogre::ColourValue(1, 1, 1));
         m_light->setSpecularColour(Ogre::ColourValue(1, 1, 1));
         m_sceneManager->getRootSceneNode()->attachObject(m_light);
@@ -140,7 +139,7 @@ void Application::createObject()
 	//----------------------------------
 	{
         ::Ogre::Entity* cube = m_sceneManager->createEntity("OGRENGINE_Cube", "cube.mesh", "ManualMaterial");
-        cube->setMaterialName("doubleTexture_M");
+        cube->setMaterialName("manual_material_M");
 		cube->setCastShadows(false);
 
         m_cube = m_sceneManager->getRootSceneNode()->createChildSceneNode();
