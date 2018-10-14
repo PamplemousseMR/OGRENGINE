@@ -1,4 +1,4 @@
-#include "ScriptMaterial.hpp"
+#include "ScriptMaterialMultiPass.hpp"
 
 #include <iostream>
 
@@ -49,7 +49,7 @@ void ScriptMaterialMultiPass::start()
 	loadScene();
 
     m_resourceLoader.load();
-    m_resourceLoader.initialise("ScriptMaterial");
+    m_resourceLoader.initialise("ScriptMaterialMultiPass");
 
 	createObject();
 }
@@ -134,7 +134,7 @@ void ScriptMaterialMultiPass::createObject()
 	//----------------------------------
 	{
         ::Ogre::Entity* cube = m_sceneManager->createEntity("OGRENGINE_Cube", "cube.mesh", "ScriptMaterial");
-        cube->setMaterialName("script_material_M");
+        cube->setMaterialName("script_material_multi_pass_M");
 		cube->setCastShadows(false);
 
         m_cube = m_sceneManager->getRootSceneNode()->createChildSceneNode();

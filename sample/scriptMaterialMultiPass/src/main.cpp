@@ -1,4 +1,4 @@
-#include "ScriptMaterial.hpp"
+#include "ScriptMaterialMultiPass.hpp"
 
 #include <iostream>
 
