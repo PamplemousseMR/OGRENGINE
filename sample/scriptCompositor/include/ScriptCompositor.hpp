@@ -5,13 +5,13 @@
 
 #include <OGRE/Ogre.h>
 
-class ScriptMaterial : public Ogre::FrameListener
+class ScriptCompositor : public Ogre::FrameListener
 {
 
 public:
 
-    ScriptMaterial();
-    virtual ~ScriptMaterial() override;
+    ScriptCompositor();
+    virtual ~ScriptCompositor() override;
 
     void start();
 	void stop();

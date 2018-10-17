@@ -1,0 +1,23 @@
+compositor script_compositor_C
+{
+    technique
+    {
+        texture renderTarget target_width target_height PF_A8R8G8B8
+
+        target renderTarget
+        {
+            input previous
+        }
+
+        target_output
+        {
+            input none
+
+            pass render_quad
+            {
+                material script_compositor_M
+                input 0 renderTarget
+            }
+        }
+    }
+}

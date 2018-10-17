@@ -1,11 +1,11 @@
-#include "ScriptMaterial.hpp"
+#include "ScriptCompositor.hpp"
 
 #include <iostream>
 
 int main()
 {
     try {
-        ScriptMaterial application;
+        ScriptCompositor application;
         application.start();
         application.run();
         application.stop();

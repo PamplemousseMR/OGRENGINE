@@ -1,8 +1,8 @@
-#include "ScriptMaterial.hpp"
+#include "ScriptCompositor.hpp"
 
 #include <iostream>
 
-ScriptMaterial::ScriptMaterial() :
+ScriptCompositor::ScriptCompositor() :
     FrameListener(),
     m_renderSystemLoader(),
     m_resourceLoader("../../config/resources.cfg"),
@@ -26,13 +26,13 @@ ScriptMaterial::ScriptMaterial() :
 #endif
 }
 
-ScriptMaterial::~ScriptMaterial()
+ScriptCompositor::~ScriptCompositor()
 {
     if(m_root != nullptr) OGRE_DELETE m_root;
 	if(m_log != nullptr) OGRE_DELETE m_log;
 }
 
-void ScriptMaterial::start()
+void ScriptCompositor::start()
 {
 	m_root->addFrameListener(this);
 
@@ -49,12 +49,15 @@ void ScriptMaterial::start()
 	loadScene();
 
     m_resourceLoader.load();
-    m_resourceLoader.initialise("ScriptMaterial");
+    m_resourceLoader.initialise("ScriptCompositor");
 
 	createObject();
+
+    ::Ogre::CompositorManager::getSingleton().addCompositor(m_viewport, "script_compositor_C");
+    ::Ogre::CompositorManager::getSingleton().setCompositorEnabled(m_viewport, "script_compositor_C", true);
 }
 
-void ScriptMaterial::stop()
+void ScriptCompositor::stop()
 {
 	destroyObject();
 
@@ -65,7 +68,7 @@ void ScriptMaterial::stop()
 	m_root->removeFrameListener(this);
 }
 
-void ScriptMaterial::run()
+void ScriptCompositor::run()
 {
     int i=0;
     while (++i < 10000)
@@ -81,7 +84,7 @@ void ScriptMaterial::run()
     }
 }
 
-void ScriptMaterial::loadScene()
+void ScriptCompositor::loadScene()
 {
 	m_renderWindow = m_root->initialise(true, "OGRENGINE_RenderWindow");
 
@@ -103,7 +106,7 @@ void ScriptMaterial::loadScene()
     m_cameraNode->attachObject(m_camera);
 }
 
-void ScriptMaterial::unloadScene()
+void ScriptCompositor::unloadScene()
 {
     m_cameraNode->detachObject(m_camera);
     m_sceneManager->getRootSceneNode()->removeChild(m_cameraNode);
@@ -118,7 +121,7 @@ void ScriptMaterial::unloadScene()
 	m_root->destroyRenderTarget(m_renderWindow);
 }
 
-void ScriptMaterial::createObject()
+void ScriptCompositor::createObject()
 {
     // Light
 	//----------------------------------
@@ -133,7 +136,7 @@ void ScriptMaterial::createObject()
     // Cube
 	//----------------------------------
 	{
-        ::Ogre::Entity* cube = m_sceneManager->createEntity("OGRENGINE_Cube", "cube.mesh", "ScriptMaterial");
+        ::Ogre::Entity* cube = m_sceneManager->createEntity("OGRENGINE_Cube", "cube.mesh", "ScriptCompositor");
         cube->setMaterialName("script_material_M");
 		cube->setCastShadows(false);
 
@@ -142,7 +145,7 @@ void ScriptMaterial::createObject()
 	}
 }
 
-void ScriptMaterial::destroyObject()
+void ScriptCompositor::destroyObject()
 {
     // Cube
     //----------------------------------
@@ -162,17 +165,17 @@ void ScriptMaterial::destroyObject()
 
 // ================================= Events =================================
 
-bool ScriptMaterial::frameStarted(const Ogre::FrameEvent&)
+bool ScriptCompositor::frameStarted(const Ogre::FrameEvent&)
 {
 	return true;
 }
 
-bool ScriptMaterial::frameEnded(const Ogre::FrameEvent&)
+bool ScriptCompositor::frameEnded(const Ogre::FrameEvent&)
 {
 	return true;
 }
 
-bool ScriptMaterial::frameRenderingQueued(const Ogre::FrameEvent&)
+bool ScriptCompositor::frameRenderingQueued(const Ogre::FrameEvent&)
 {
     // Rotate the cube
 	//---------------------------------
