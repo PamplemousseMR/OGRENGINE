@@ -1,0 +1,22 @@
+material script_compositor_M
+{
+    technique
+    {
+        pass
+        {
+            vertex_program_ref script_compositor_P_VS
+            {
+            }
+
+            fragment_program_ref script_compositor_P_FS
+            {
+                param_named u_tRenderTarget int 0
+            }
+
+            texture_unit
+            {
+                filtering point point point
+            }
+        }
+    }
+}

@@ -8,7 +8,7 @@ vertex_program script_material_VS_GLSL glsl
         param_named_auto u_m4View view_matrix
         param_named_auto u_m4Projection projection_matrix
 
-        param_named_auto u_f3LightPos_Ms light_position_view_space 0
+        param_named_auto u_f3LightPos_Vs light_position_view_space 0
     }
 }
 

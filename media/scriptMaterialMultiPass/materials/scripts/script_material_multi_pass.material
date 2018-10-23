@@ -23,25 +23,25 @@ material script_material_multi_pass_M
             texture_unit
             {
                 texture rock_diffuse.jpg
-                filtering linear
+                filtering anisotropic
             }
 
             texture_unit
             {
                 texture rock_diffuse.jpg
-                filtering linear
+                filtering anisotropic
             }
 
             texture_unit
             {
                 texture rock_normal.jpg
-                filtering linear
+                filtering anisotropic
             }
 
             texture_unit
             {
                 texture rock_specular.png
-                filtering linear
+                filtering anisotropic
             }
         }
 
@@ -68,25 +68,25 @@ material script_material_multi_pass_M
             texture_unit
             {
                 texture rock_diffuse.jpg
-                filtering linear
+                filtering anisotropic
             }
 
             texture_unit
             {
                 texture rock_diffuse.jpg
-                filtering linear
+                filtering anisotropic
             }
 
             texture_unit
             {
                 texture rock_normal.jpg
-                filtering linear
+                filtering anisotropic
             }
 
             texture_unit
             {
                 texture rock_specular.png
-                filtering linear
+                filtering anisotropic
             }
         }
 
@@ -113,25 +113,25 @@ material script_material_multi_pass_M
             texture_unit
             {
                 texture rock_diffuse.jpg
-                filtering linear
+                filtering anisotropic
             }
 
             texture_unit
             {
                 texture rock_diffuse.jpg
-                filtering linear
+                filtering anisotropic
             }
 
             texture_unit
             {
                 texture rock_normal.jpg
-                filtering linear
+                filtering anisotropic
             }
 
             texture_unit
             {
                 texture rock_specular.png
-                filtering linear
+                filtering anisotropic
             }
         }
     }

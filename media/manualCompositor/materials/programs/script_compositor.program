@@ -1,0 +1,24 @@
+vertex_program script_compositor_VS_GLSL glsl
+{
+    source script_compositor_VS.glsl
+
+    default_params
+    {
+        param_named_auto u_worldViewProj worldviewproj_matrix
+    }
+}
+
+vertex_program script_compositor_P_VS unified
+{
+    delegate script_compositor_VS_GLSL
+}
+
+fragment_program script_compositor_FS_GLSL glsl
+{
+    source script_compositor_FS.glsl
+}
+
+fragment_program script_compositor_P_FS unified
+{
+    delegate script_compositor_FS_GLSL
+}
