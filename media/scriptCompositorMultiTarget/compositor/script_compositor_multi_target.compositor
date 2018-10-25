@@ -1,0 +1,38 @@
+compositor script_compositor_multi_target_C
+{
+    technique
+    {
+        texture renderTarget target_width target_height PF_A8R8G8B8
+        texture renderMultipleTarget target_width target_height PF_A8R8G8B8 PF_A8R8G8B8 PF_A8R8G8B8
+
+        target renderTarget
+        {
+            input previous
+        }
+
+        target renderMultipleTarget
+        {
+            input none
+
+            pass render_quad
+            {
+                material script_compositor_multi_target_draw_M
+                input 0 renderTarget
+            }
+        }
+
+        target_output
+        {
+            input none
+
+            pass render_quad
+            {
+                material script_compositor_multi_target_merge_M
+                input 0 renderMultipleTarget 0
+                input 1 renderMultipleTarget 1
+                input 2 renderMultipleTarget 2
+                input 3 renderTarget
+            }
+        }
+    }
+}

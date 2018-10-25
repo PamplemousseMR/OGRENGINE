@@ -1,0 +1,40 @@
+vertex_program script_material_multi_target_VS_GLSL glsl
+{
+    source script_material_multi_target_VS.glsl
+
+    default_params
+    {
+        param_named_auto u_m4Model world_matrix
+        param_named_auto u_m4View view_matrix
+        param_named_auto u_m4Projection projection_matrix
+
+        param_named_auto u_f3LightPos_Vs light_position_view_space 0
+    }
+}
+
+vertex_program script_material_multi_target_P_VS unified
+{
+    delegate script_material_multi_target_VS_GLSL
+}
+
+fragment_program script_material_multi_target_FS_GLSL glsl
+{
+    source script_material_multi_target_FS.glsl
+}
+
+fragment_program script_material_multi_target_P_FS unified
+{
+    delegate script_material_multi_target_FS_GLSL
+
+    default_params
+    {
+        param_named_auto u_f3AmbientCol surface_ambient_colour
+        param_named_auto u_f3DiffuseCol surface_diffuse_colour
+        param_named_auto u_f3SpecularCol surface_specular_colour
+        param_named_auto u_fSpecularExponent surface_shininess
+
+        param_named_auto u_f3LightAmbientCol ambient_light_colour 0
+        param_named_auto u_f3LightDiffuseCol light_diffuse_colour 0
+        param_named_auto u_f3LightSpecularCol light_specular_colour 0
+    }
+}

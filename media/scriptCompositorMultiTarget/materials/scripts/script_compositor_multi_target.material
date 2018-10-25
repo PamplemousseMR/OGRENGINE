@@ -1,0 +1,65 @@
+material script_compositor_multi_target_draw_M
+{
+    technique
+    {
+        pass
+        {
+            vertex_program_ref script_compositor_multi_target_P_VS
+            {
+            }
+
+            fragment_program_ref script_compositor_multi_target_draw_P_FS
+            {
+                param_named u_tRenderTarget int 0
+            }
+
+            texture_unit
+            {
+                filtering point point point
+            }
+        }
+    }
+}
+
+//----------------------------------------------------------------
+
+material script_compositor_multi_target_merge_M
+{
+    technique
+    {
+        pass
+        {
+            vertex_program_ref script_compositor_multi_target_P_VS
+            {
+            }
+
+            fragment_program_ref script_compositor_multi_target_merge_P_FS
+            {
+                param_named u_tRenderTarget0 int 0
+                param_named u_tRenderTarget1 int 1
+                param_named u_tRenderTarget2 int 2
+                param_named u_tRenderTarget3 int 3
+            }
+
+            texture_unit
+            {
+                filtering point point point
+            }
+
+            texture_unit
+            {
+                filtering point point point
+            }
+
+            texture_unit
+            {
+                filtering point point point
+            }
+
+            texture_unit
+            {
+                filtering point point point
+            }
+        }
+    }
+}

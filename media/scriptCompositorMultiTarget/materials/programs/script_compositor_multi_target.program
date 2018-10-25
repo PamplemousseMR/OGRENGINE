@@ -1,0 +1,39 @@
+vertex_program script_compositor_multi_target_VS_GLSL glsl
+{
+    source script_compositor_multi_target_VS.glsl
+
+    default_params
+    {
+        param_named_auto u_worldViewProj worldviewproj_matrix
+    }
+}
+
+vertex_program script_compositor_multi_target_P_VS unified
+{
+    delegate script_compositor_multi_target_VS_GLSL
+}
+
+//----------------------------------------------------------------
+
+fragment_program script_compositor_multi_target_draw_FS_GLSL glsl
+{
+    source script_compositor_multi_target_draw_FS.glsl
+}
+
+fragment_program script_compositor_multi_target_draw_P_FS unified
+{
+    delegate script_compositor_multi_target_draw_FS_GLSL
+}
+
+//----------------------------------------------------------------
+
+
+fragment_program script_compositor_multi_target_merge_FS_GLSL glsl
+{
+    source script_compositor_multi_target_merge_FS.glsl
+}
+
+fragment_program script_compositor_multi_target_merge_P_FS unified
+{
+    delegate script_compositor_multi_target_merge_FS_GLSL
+}
