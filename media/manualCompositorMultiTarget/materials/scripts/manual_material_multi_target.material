@@ -1,0 +1,48 @@
+material manual_material_multi_target_M
+{
+    technique
+    {
+        pass
+        {
+            ambient 0.2 0.2 0.2 1.0
+            diffuse 1.0 1.0 1.0 1.0
+            specular 1.0 1.0 1.0 1.0 33.0
+
+            vertex_program_ref manual_material_multi_target_P_VS
+            {
+            }
+
+            fragment_program_ref manual_material_multi_target_P_FS
+            {
+                param_named u_tAmbient int 0
+                param_named u_tDiffuse int 1
+                param_named u_tNormal int 2
+                param_named u_tSpecular int 3
+            }
+
+            texture_unit
+            {
+                texture rock_diffuse.jpg
+                filtering anisotropic
+            }
+
+            texture_unit
+            {
+                texture rock_diffuse.jpg
+                filtering anisotropic
+            }
+
+            texture_unit
+            {
+                texture rock_normal.jpg
+                filtering anisotropic
+            }
+
+            texture_unit
+            {
+                texture rock_specular.png
+                filtering anisotropic
+            }
+        }
+    }
+}
