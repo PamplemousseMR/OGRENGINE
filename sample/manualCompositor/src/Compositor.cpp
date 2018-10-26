@@ -54,5 +54,6 @@ void Compositor::load()
 void Compositor::unload()
 {
     std::cout << "[" << __FUNCTION__ << "] " << m_name << "..." << std::endl;
+    ::Ogre::CompositorManager::getSingleton().remove(m_compositor);
     m_compositor.reset();
 }
