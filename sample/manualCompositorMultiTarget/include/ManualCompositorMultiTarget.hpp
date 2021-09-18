@@ -4,7 +4,7 @@
 #include "RenderSystemManager.hpp"
 #include "Compositor.hpp"
 
-#include <OGRE/Ogre.h>
+#include <OGRE/OgreFrameListener.h>
 
 class ManualCompositorMultiTarget : public Ogre::FrameListener
 {

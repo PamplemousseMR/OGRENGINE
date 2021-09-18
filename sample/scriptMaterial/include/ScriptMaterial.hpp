@@ -3,7 +3,7 @@
 #include "ResourceManager.hpp"
 #include "RenderSystemManager.hpp"
 
-#include <OGRE/Ogre.h>
+#include <OGRE/OgreFrameListener.h>
 
 class ScriptMaterial : public Ogre::FrameListener
 {

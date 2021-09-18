@@ -4,7 +4,7 @@
 #include "RenderSystemManager.hpp"
 #include "Material.hpp"
 
-#include <OGRE/Ogre.h>
+#include <OGRE/OgreFrameListener.h>
 
 class ManualMaterial : public Ogre::FrameListener
 {

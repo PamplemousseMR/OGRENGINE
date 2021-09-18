@@ -1,5 +1,6 @@
 #include "Compositor.hpp"
 
+#include <OGRE/OgreRenderQueue.h>
 #include <OGRE/OgreCompositorManager.h>
 #include <OGRE/OgreCompositionTargetPass.h>
 #include <OGRE/OgreCompositionPass.h>
