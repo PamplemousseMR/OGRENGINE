@@ -34,6 +34,7 @@ private:
     ::Ogre::SceneNode* m_cube;
 
     ::Ogre::SceneNode* m_cameraNode;
+    ::Ogre::SceneNode* m_lightNode;
 
 	void loadScene();
 	void createObject();

@@ -89,7 +89,6 @@ void ScriptMaterialMultiPass::loadScene()
     m_sceneManager->setAmbientLight(::Ogre::ColourValue(1.0, 1.0, 1.0, 1.0));
 
 	m_camera = m_sceneManager->createCamera("OGRENGINE_Camera");
-    m_camera->setPosition(Ogre::Vector3(0, 0, 500));
 	m_camera->setNearClipDistance(Ogre::Real(0.01));
     m_camera->setFarClipDistance(Ogre::Real(1000));
 	m_camera->setAutoAspectRatio(true);
@@ -101,10 +100,14 @@ void ScriptMaterialMultiPass::loadScene()
 
 	m_cameraNode = m_sceneManager->getRootSceneNode()->createChildSceneNode();
     m_cameraNode->attachObject(m_camera);
+    m_cameraNode->setPosition(Ogre::Vector3(0, 0, 500));
 }
 
 void ScriptMaterialMultiPass::unloadScene()
 {
+    m_lightNode->detachObject(m_light);
+    m_sceneManager->getRootSceneNode()->removeChild(m_lightNode);
+
     m_cameraNode->detachObject(m_camera);
     m_sceneManager->getRootSceneNode()->removeChild(m_cameraNode);
 
@@ -125,11 +128,12 @@ void ScriptMaterialMultiPass::createObject()
 	{
         m_light = m_sceneManager->createLight("OGRENGINE_Light");
         m_light->setType(Ogre::Light::LT_POINT);
-        m_light->setPosition(Ogre::Vector3(500, 0, 1000));
         m_light->setDiffuseColour(Ogre::ColourValue(1, 1, 1));
         m_light->setSpecularColour(Ogre::ColourValue(1, 1, 1));
-        m_sceneManager->getRootSceneNode()->attachObject(m_light);
-	}
+
+        m_lightNode = m_sceneManager->getRootSceneNode()->createChildSceneNode();
+        m_lightNode->attachObject(m_light);
+        m_lightNode->setPosition(Ogre::Vector3(500, 0, 1000));	}
     // Cube
 	//----------------------------------
 	{
